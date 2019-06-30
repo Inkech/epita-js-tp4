@@ -31,11 +31,9 @@ const PostsList = () => {
       </ul>
       <div>
         <p>Create new post</p>
-        <form>
       <input ref={inputTitle} placeholder="Title" type="text"/>
       <input ref={inputBody} placeholder="Body" type="text"/>
       <button onClick={handleClick}>Create</button>
-      </form>
       </div>
   </div>
   );

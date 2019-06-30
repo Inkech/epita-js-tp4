@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FavouriteToggle from './FavouriteToggle';
+import ScoreCounter from '../ScoreCounter';
 
-const Post = ({ data }) => (
+const Post = ({ data }) => {
+
+  const [displayBody,setDisplay] = useState(false);
+
+  const handleClick = () => setDisplay(!displayBody);
+
+  return(
   <li
     style={{
       backgroundColor: 'white',
@@ -12,10 +19,13 @@ const Post = ({ data }) => (
       cursor: 'pointer'
     }}
   >
-    <span style={{ fontWeight: '900' }}>{data.title}</span>
+    <span style={{ fontWeight: '900' }} onClick={handleClick}>{data.title}</span>
 
+    <ScoreCounter style={{ float: 'left' }}/>
     <FavouriteToggle style={{ float: 'right' }} />
+    {displayBody ? <div onClick={handleClick}>{data.body}</div> : <span></span>}
   </li>
-);
+  );
+};
 
 export default Post;
